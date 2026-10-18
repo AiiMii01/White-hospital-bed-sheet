@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>N HEALTH - ระบบบันทึกเส้นทางและกระจายงาน รพ.ราชวิถี</title>
+  
+  <!-- Font Awesome & Google Fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- CSS ประจำโปรเจกต์ -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      
+      <!-- ส่วนหัว Header -->
+      <div class="header">
+        <div class="brand-pill">
+          <i class="fa-solid fa-hospital-user"></i> N HEALTH +
+        </div>
+        <h2>ระบบบันทึกและกระจายงานผ้าทางการแพทย์</h2>
+        <p class="subtitle">โรงพยาบาลราชวิถี</p>
+        <div class="live-clock" id="liveClock">
+          <i class="fa-regular fa-clock"></i> กำลังโหลดเวลา...
+        </div>
+      </div>
+
+      <!-- ฟอร์มกรอกข้อมูล -->
+      <form id="deliveryForm" onsubmit="handleFormSubmit(event)">
+        
+        <!-- ผู้เดินงาน -->
+        <div class="form-group">
+          <label for="senderName">
+            <span class="title-label"><i class="fa-solid fa-id-badge"></i> เจ้าหน้าที่ผู้เดินงาน</span>
+            <span class="req">*</span>
+          </label>
+          <input type="text" id="senderName" name="senderName" placeholder="ระบุชื่อ หรือรหัสพนักงาน" required>
+        </div>
+
+        <!-- จุดรับต้นทาง (เปลี่ยนเป็น Dropdown ผ้าสะอาด / ผ้าสกปรก) -->
+        <div class="form-group">
+          <label for="origin">
+            <span class="title-label"><i class="fa-solid fa-location-crosshairs"></i> จุดรับต้นทาง</span>
+            <span class="req">*</span>
+          </label>
+          <select id="origin" name="origin" required>
+            <option value="" disabled selected>-- แตะเพื่อเลือกประเภทผ้าต้นทาง --</option>
+            <option value="🧺 ผ้าสะอาด">🧺 ผ้าสะอาด</option>
+            <option value="🧺 ผ้าสกปรก">🧺 ผ้าสกปรก</option>
+          </select>
+        </div>
+
+        <!-- ลำดับจุดส่งปลายทาง -->
+        <div class="form-group">
+          <label>
+            <span class="title-label"><i class="fa-solid fa-route"></i> ลำดับจุดส่งปลายทาง</span>
+            <span class="req">*</span>
+          </label>
+          <div class="route-timeline" id="destinationList">
+            <div class="dest-row">
+              <span class="dest-badge">1</span>
+              <input type="text" class="dest-input" placeholder="จุดส่งที่ 1 (เช่น ตึกเฉลิมพระเกียรติ ชั้น 5)" required>
+            </div>
+          </div>
+          <button type="button" class="btn-add" onclick="addDestinationField()">
+            <i class="fa-solid fa-circle-plus"></i> เพิ่มจุดหมายปลายทางถัดไป
+          </button>
+        </div>
+
+        <!-- ปุ่มยืนยัน (ไอคอนส่งงานทางการ) -->
+        <button type="submit" id="submitBtn" class="btn-submit">
+          <i class="fa-solid fa-paper-plane"></i> ยืนยันการส่งข้อมูล
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Pop-up Modal สำเร็จ -->
+  <div class="modal-overlay" id="successModal">
+    <div class="modal-card">
+      <div class="modal-icon">
+        <i class="fa-solid fa-check"></i>
+      </div>
+      <h3>การส่งสำเร็จ!</h3>
+      <p id="modalMsg">ส่งแจ้งเตือนงานจัดส่งเข้าเซิร์ฟเวอร์เรียบร้อยแล้ว</p>
+      <button type="button" class="btn-modal" onclick="closeModal()">ตกลง</button>
+    </div>
+  </div>
+
+  <!-- นำเข้า Script -->
+  <script src="script.js"></script>
+</body>
+</html>
