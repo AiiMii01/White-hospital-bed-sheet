@@ -66,7 +66,7 @@ function updateBadges() {
 
 
 // ==============================================================
-// 4. ส่งข้อมูลเข้า Discord Webhook (กระชับ สวยงาม มีปุ่ม Copy)
+// 4. ส่งข้อมูลเข้า Discord Webhook (เว้นวรรคช่องไฟโปร่งตา 100%)
 // ==============================================================
 async function handleFormSubmit(e) {
   if (e && e.preventDefault) {
@@ -103,26 +103,21 @@ async function handleFormSubmit(e) {
     hour12: false
   });
 
-  // โครงสร้างการ์ด Discord Embed สวยงาม + มีปุ่ม Copy
+  // ใช้ Invisible Character คั่นบรรทัด บังคับให้ Discord ดันระยะห่างอย่างแน่นอน
   const payload = {
-    username: "N Health Dispatcher",
+    username: "N Health IV Dispatcher",
     avatar_url: "https://cdn-icons-png.flaticon.com/512/2966/2966327.png",
     embeds: [
       {
-        title: "🏥 ใบแจ้งงานระบบบันทึกและกระจายงานผ้าทางการแพทย์)",
-        description: "━━━━━━━━━━━━━━━━━━━━━━━━━━━",
-        color: 0x00A6FB, // ฟ้าสดใส N Health
+        description: `### 🏥 ใบแจ้งงานจัดส่งน้ำเกลือ (รพ.ราชวิถี)\n` +
+                     `‎\n` +
+                     `👤 **ผู้เดินงาน :** **${senderName || "-"}**\n` +
+                     `‎\n` +
+                     `🕒 **เวลาบันทึก :** **${timeStr} น.**\n` +
+                     `‎\n` +
+                     `━━━━━━━━━━━━━━━━━━━━━━━━━━━\n`,
+        color: 0x0EA5E9,
         fields: [
-          {
-            name: "👤 ผู้เดินงาน",
-            value: `**${senderName || "-"}**`,
-            inline: true
-          },
-          {
-            name: "🕒 เวลาบันทึก",
-            value: `**${timeStr} น.**`,
-            inline: true
-          },
           {
             name: "📍 จุดรับต้นทาง (กด Copy ได้)",
             value: "```fix\n" + (origin || "-") + "\n```",
@@ -135,7 +130,7 @@ async function handleFormSubmit(e) {
           }
         ],
         footer: {
-          text: "N Health Logistics Dispatcher • โรงพยาบาลราชวิถี"
+          text: "N Health IV Logistics • โรงพยาบาลราชวิถี"
         },
         timestamp: new Date().toISOString()
       }
@@ -164,7 +159,7 @@ async function handleFormSubmit(e) {
       document.getElementById('destinationList').innerHTML = `
         <div class="dest-row">
           <span class="dest-badge">1</span>
-          <input type="text" class="dest-input" placeholder="จุดส่งที่ 1 (เช่น ตึกเฉลิมพระเกียรติ ชั้น 5)" required>
+          <input type="text" class="dest-input" placeholder="จุดส่งที่ 1 (เช่น ตึกเฉลิมพระเกียรติ หอผู้ป่วย 8B)" required>
         </div>
       `;
       destCount = 1;
