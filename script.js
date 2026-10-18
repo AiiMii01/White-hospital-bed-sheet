@@ -109,7 +109,7 @@ async function handleFormSubmit(e) {
     avatar_url: "https://cdn-icons-png.flaticon.com/512/2966/2966327.png",
     embeds: [
       {
-        description: `### 🏥 ใบแจ้งงานจัดส่งน้ำเกลือ (รพ.ราชวิถี)\n` +
+        description: `### 🏥 ใบแจ้งงานระบบบันทึกและกระจายงานผ้าทางการแพทย์ (รพ.ราชวิถี)\n` +
                      `‎\n` +
                      `👤 **ผู้เดินงาน :** **${senderName || "-"}**\n` +
                      `‎\n` +
