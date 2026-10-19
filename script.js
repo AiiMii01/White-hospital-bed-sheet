@@ -1,7 +1,7 @@
 // ==============================================================
 // 1. ตั้งค่า DISCORD WEBHOOK URL
 // ==============================================================
-const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1561355063241474069/4eaapW0aFhv_BN46XodHbLNdEdsOcxVG_lfmDnqbMgsfQdt49ezpiocJFty_g1AwoQcW";
+const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1561732338629480529/gXzUoQi9V8lgqFAws79KGhEQI5hFMJA_42tpx7Wt9NgRiRllqQJd9w4QUNIDnvyB_QXC";
 
 
 // ==============================================================
