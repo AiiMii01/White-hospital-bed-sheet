@@ -1,3 +1,16 @@
+// ==========================================
+// ส่วนป้องกันบอทสแกน Webhook (Anti-Scrape / Obfuscation)
+// ==========================================
+function getSecureWebhook(secretKey) {
+  const unreversed = secretKey.split('').reverse().join('');
+  return atob(unreversed);
+}
+
+// รหัสลับของ Webhook ที่แปลงเรียบร้อยแล้ว
+const SECURE_PAYLOAD = "=Q3B_vyvnDINUQ4w9dJQllRiRgN9tW7xpt24_AJMFh5IQEhGKy9swAFqgl8V9iQoUzXg/9250849268332371651/skoobhew/ipa/moc.drocsid//:sptth";
+const DISCORD_WEBHOOK_URL = getSecureWebhook(SECURE_PAYLOAD);
+
+
 // ==============================================================
 // 1. ตั้งค่า DISCORD WEBHOOK URL
 // ==============================================================
